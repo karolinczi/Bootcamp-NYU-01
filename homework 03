@@ -1,0 +1,17 @@
+#Iterate from 1 to 15, printing whether the number is odd or even
+
+mylist = list(range(1, 16))
+
+def test_even_number(number):
+    return number % 2 == 0
+
+# Filter and print even numbers
+even_numbers = filter(test_even_number, mylist)
+
+for number in even_numbers:
+    print(number)
+
+  
+  
+
+  

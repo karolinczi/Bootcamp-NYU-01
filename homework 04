@@ -1,0 +1,6 @@
+# Take two integers as input from user and return the sum
+
+x  = 23
+y = 18
+
+print(x+y)

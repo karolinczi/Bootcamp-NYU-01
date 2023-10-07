@@ -1,0 +1,7 @@
+# Print a list in reverse order
+
+mylist = ['end', 'with', 'a', 'strong', 'concluding', 'sentence', 'that', 'summarizes', 'the', 'main', 'points']
+
+
+for word in reversed(mylist):
+    print(word)

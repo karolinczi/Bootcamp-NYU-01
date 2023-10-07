@@ -1,3 +1,16 @@
 #Write a function that takes a word as an argument and returns the number of vowels in the word
 
+mystring = 'bourgeois'
 
+vowels ="aeiou"
+
+def count_vowels (mystring):
+  count = 0
+  for char in mystring:
+    if char in vowels:
+      count +=1
+  return count
+
+vowel_count = count_vowels(mystring)
+
+print (vowel_count)

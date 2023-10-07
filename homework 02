@@ -1,0 +1,6 @@
+#Iterate through the following list of animals and print each one in all caps.
+animals=['tiger', 'elephant', 'monkey', 'zebra', 'panther']
+
+  a= ['tiger', 'elephant', 'monkey', 'zebra', 'panther']
+
+  print (a)

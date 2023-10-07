@@ -1,0 +1,11 @@
+#Display numbers at the odd indices of a list
+
+mylist = list(range(1, 100))
+
+def odd_number(number):
+    return number % 2 == 1
+
+odd_numbers = filter(odd_number, mylist)
+
+for number in odd_numbers:
+    print(number)

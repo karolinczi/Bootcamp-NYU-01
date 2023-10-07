@@ -1,6 +1,8 @@
 #Iterate through the following list of animals and print each one in all caps.
-animals=['tiger', 'elephant', 'monkey', 'zebra', 'panther']
+# animals=['tiger', 'elephant', 'monkey', 'zebra', 'panther']
 
-  a= ['tiger', 'elephant', 'monkey', 'zebra', 'panther']
 
-  print (a)
+a = ['tiger', 'elephant', 'monkey', 'zebra', 'panther']
+for word in a:
+  uppercase_word = word.upper()
+  print(uppercase_word)

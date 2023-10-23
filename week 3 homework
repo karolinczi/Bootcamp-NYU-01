@@ -1,0 +1,116 @@
+Numpy Practice Questions
+1. Define two custom numpy arrays, say A and B. Generate two new numpy arrays by stacking A and B vertically and horizontally.
+
+A = np.array([1,2,3,9,])
+
+B = np.array([4,5,6,7,8])
+
+stacked_vertically = np.vstack((A,B))
+
+stacked_vertically = np.hstack((A,B))
+
+
+2. Find common elements between A and B. [Hint : Intersection of two sets]
+
+import numpy as np
+
+A = np.array((1,2,3,4,5,6,7,8))
+B = np.array((4,5,6,7,9))
+
+common_elements = set(A).intersection(B)
+
+common_elements_list = list(common_elements)
+
+
+
+3. Extract all numbers from A which are within a specific range. eg between 5 and 10. [Hint: np.where() might be useful or boolean masks]
+
+import numpy as np
+
+A = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+
+lower_bound = 5
+upper_bound = 10
+
+result = A[(A >= lower_bound) & (A <= upper_bound)]
+
+print(result)
+
+
+4. Filter the rows of iris_2d that has petallength (3rd column) > 1.5 and sepallength (1st column) < 5.0
+	url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+	iris_2d = np.genfromtxt(url, delimiter=',', dtype='float', usecols=[0,1,2,3])
+
+
+import numbpy as np
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+iris_2d = np.genfromtxt(url, delimiter=',', dtype='float', usecols=[0,1,2,3])
+
+condition = (iris_2d[:,2] > 1.5) & (iris_2d[:,0]< 5.0)
+
+filtered_iris = iris_2d[condition]
+
+
+
+
+
+Practice Questions for Pandas
+
+1. From df filter the 'Manufacturer', 'Model' and 'Type' for every 20th row starting from 1st (row 0).
+
+```
+df = pd.read_csv('https://raw.githubusercontent.com/selva86/datasets/master/Cars93_miss.csv')
+```
+
+import pandas as pd
+
+url = 'https://raw.githubusercontent.com/selva86/datasets/master/Cars93_miss.csv'
+df = pd.read_csv(url)
+
+# Filter the desired columns and rows
+filtered_df = df[['Manufacturer', 'Model', 'Type']].iloc[::20]
+
+
+2. Replace missing values in Min.Price and Max.Price columns with their respective mean.
+
+```
+df = pd.read_csv('https://raw.githubusercontent.com/selva86/datasets/master/Cars93_miss.csv')
+```
+
+import pandas as pd
+
+url = 'https://raw.githubusercontent.com/selva86/datasets/master/Cars93_miss.csv'
+df = pd.read_csv(url)
+
+# Calculate the mean for 'Min.Price' and 'Max.Price' columns
+mean_min_price = df['Min.Price'].mean()
+mean_max_price = df['Max.Price'].mean()
+
+# Replace missing values with the respective means
+df['Min.Price'].fillna(mean_min_price, inplace=True)
+df['Max.Price'].fillna(mean_max_price, inplace=True)
+
+# Print the updated DataFrame
+print(df)
+
+
+
+
+
+3. How to get the rows of a dataframe with row sum > 100?
+
+```
+df = pd.DataFrame(np.random.randint(10, 40, 60).reshape(-1, 4))
+```
+
+import pandas as pd
+import numpy as np
+
+data = np.random.randint(10, 40, 60).reshape(-1, 4)
+df = pd.DataFrame(data)
+
+# Calculate the row sums and compare them to 100
+row_sums = df.sum(axis=1)
+filtered_rows = df[row_sums > 100]
+
+print(filtered_rows)

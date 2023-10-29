@@ -1,0 +1,126 @@
+1. Create a line plot of ZN and INDUS in the housing data.
+
+	a. For ZN, use a solid green line. For INDUS, use a blue dashed line.
+	b. Change the figure size to a width of 12 and height of 8.
+	c. Change the style sheet to something you find https://tonysyu.github.io/raw_content/matplotlib-style-gallery/gallery.html.
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+data = {'ZN': [18.0, 0.0, 0.0, 0.0, 0.0], 'INDUS': [2.31, 7.07, 7.07, 2.18, 2.18]}
+housing_data = pd.DataFrame(data)
+
+sns.set(style="whitegrid")
+
+plt.figure(figsize=(12, 8))
+
+plt.plot(housing_data['ZN'], color='green', linestyle='-', label='ZN')
+
+plt.plot(housing_data['INDUS'], color='blue', linestyle='--', label='INDUS')
+
+plt.xlabel('Index')
+plt.ylabel('Values')
+plt.title('Line Plot of ZN and INDUS in Housing Data')
+
+plt.legend()
+plt.show()
+
+
+
+2. Create a bar chart using col1 and col2 of dummy data.
+
+	a. Give the plot a large title of your choosing.
+	b. Move the legend to the lower-left corner.
+	c. Do the same thing but with horizontal bars.
+	d. Move the legend to the upper-right corner.
+
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = {'col1': [3, 7, 5, 9, 2], 'col2': [6, 2, 8, 4, 10]}
+dummy_data = pd.DataFrame(data)
+
+plt.figure(figsize=(8, 6))
+
+plt.bar(dummy_data.index, dummy_data['col1'], label='col1', color='blue', alpha=0.7)
+plt.bar(dummy_data.index, dummy_data['col2'], label='col2', color='orange', alpha=0.7)
+
+plt.title('Bar Chart of col1 and col2')
+
+plt.legend(loc='lower left')
+
+plt.show()
+
+plt.figure(figsize=(8, 6))
+
+plt.barh(dummy_data.index, dummy_data['col1'], label='col1', color='blue', alpha=0.7)
+plt.barh(dummy_data.index, dummy_data['col2'], label='col2', color='orange', alpha=0.7)
+
+plt.title('Horizontal Bar Chart of col1 and col2')
+
+plt.legend(loc='upper right')
+
+plt.show()
+
+
+
+3. Create a histogram with pandas for using MEDV in the housing data.
+
+	a. Set the bins to 20
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {'MEDV': [24.0, 21.6, 34.7, 33.4, 36.2, 28.7, 22.9, 27.1, 16.5, 18.9]}
+housing_data = pd.DataFrame(data)
+
+plt.figure(figsize=(8, 6))
+housing_data['MEDV'].hist(bins=20, color='skyblue', edgecolor='black')
+
+plt.xlabel('MEDV (Median Value)')
+plt.ylabel('Frequency')
+plt.title('Histogram of MEDV in Housing Data')
+
+plt.show()
+
+
+4. Create a scatter plot of two heatmap entries that appear to have a very positive correlation.
+
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+x = np.random.randn(100)
+y = 2 * x + 1 + np.random.randn(100)
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=x, y=y, color='blue')
+
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Scatter Plot of Two Variables with Positive Correlation')
+
+plt.show()
+
+
+5. Now, create a scatter plot of two heatmap entries that appear to have negative correlation.
+
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+x = np.random.randn(100)
+y = -2 * x + 1 + np.random.randn(100)
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=x, y=y, color='red')
+
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Scatter Plot of Two Variables with Negative Correlation')
+
+plt.show()

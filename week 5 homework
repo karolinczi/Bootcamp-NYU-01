@@ -18,20 +18,75 @@
     It simplifies the analysis of data by allowing us to rely on the properties of the normal distribution, even when dealing with populations that are not normally distributed, 
     provided the sample size is sufficiently large.
 
+    The Central Limit Theorem states that if you take random samples of a sufficiently large size (usually n ≥ 30, though the exact threshold can vary) 
+    from any population with a finite mean and variance, and calculate the sample means, the distribution of those sample means will be approximately normally distributed, 
+    even if the population itself is not normally distributed.
 
+    Central Limit Theorem 
+    - simplifies inference: The CLT simplifies statistical analysis by enabling the use of parametric statistical methods, such as the t-test, ANOVA, and regression, which assume a normal distribution. 
+    Even when the population is not normally distributed, the sampling distribution of the sample mean is approximately normal for sufficiently large sample sizes, making these methods applicable in many situations.
+    - is a great foundation for Hypothesis Testing: The CLT is fundamental to hypothesis testing and confidence interval estimation. 
+    It allows us to make statistical inferences about population parameters based on sample data, providing a basis for decision-making in scientific research, quality control, and business analytics.
+    - Has a real-world applications: In practice, many processes and data sets exhibit non-normal distributions. 
+    The CLT's application allows for the use of normal-based statistical tools in a wide range of fields, from finance to healthcare, marketing, and social sciences.
 
 
 3. What is the statistical power?
 
+    It is a fundamental concept in hypothesis testing and experimental design. It measures the ability 
+    of a statistical test to detect a true effect or difference when it exists in the population. In other words, it quantifies the probability that a test will correctly reject a null hypothesis when the null 
+    hypothesis is false.
 
 4. How do you control for biases?
 
-    Controlling for biases is one of the challenges of good 
+    Controlling for biases is one of the challenges of good data.
+    To help control for biases in statistical tests:
+    - Randomization:
+        Randomly assign subjects or treatment groups to minimize the influence of uncontrolled variables or biases. 
+        Randomization helps ensure that both known and unknown factors are evenly distributed across groups.
+    - Stratified Sampling:
+        In cases where certain subpopulations might introduce bias, use stratified sampling to ensure representation from each stratum. This can help control for biases related to specific demographic or categorical variables.
+    - Blinding:
+        Employ blinding or masking techniques to ensure that individuals involved in the study (participants, researchers, data analysts) are unaware of the group assignments or conditions. 
+        Blinding helps prevent biases resulting from expectations or preconceived notions.
+    - Double-Blinding:
+        In clinical trials and experiments, use double-blinding, where both the participants and the experimenters are unaware of group assignments. This helps prevent both participant and researcher bias.
+    - Counterbalancing:
+        In experimental design, use counterbalancing to control for order effects. Counterbalancing involves presenting conditions or treatments in different sequences to different groups to reduce the impact of order-related biases.
+    - Matched Pairs Design:
+        Use matched pairs design when comparing two groups by matching subjects in one group with subjects in the other group based on relevant characteristics. This reduces bias related to differences in individual characteristics.
+    - Control Variables:
+        Identify and control for potential confounding variables by including them in the analysis as covariates or by using matching techniques. This helps isolate the effect of the variable of interest.
+    - Sensitivity Analysis:
+        Conduct sensitivity analysis by testing the robustness of results under different assumptions or conditions. This can help identify how vulnerable your findings are to potential biases.
+    - Pre-Analysis Plans:
+        Develop and follow pre-analysis plans, which outline the analysis methods, criteria for data inclusion, and how to handle outliers and missing data. This can help reduce post hoc analysis biases.
+    - Peer Review:
+        Seek input from peers or experts in the field to review your methodology and results. Peer review can help identify potential biases or flaws in your analysis.
+    - Transparency and Reporting:
+        Transparently report all data, including outliers and any deviations from the original study design or pre-analysis plan. Transparency can help mitigate reporting bias.
+    - Meta-Analysis:
+        When possible, conduct meta-analyses to combine results from multiple studies on the same topic. This can help control for publication bias and provide a more comprehensive and less biased view of the evidence.
+    - Bias Assessment:
+        Explicitly assess potential sources of bias in your study, such as selection bias, measurement bias, and publication bias, and discuss how you've addressed them.
+    
+    It's important to note that while these strategies can help control for biases, no study can be entirely bias-free. Researchers should always be aware of potential sources of bias and take steps 
+    to minimize their impact on the results. Additionally, transparent reporting and open discussion of potential biases are essential in promoting the credibility and reliability of research findings.
 
 5. What are confounding variables?
 
+    Confounding variables, also known as confounders, are third variables in a statistical analysis that are related to both the independent variable (the variable of interest) and the dependent variable (the outcome). 
+    These variables can lead to erroneous or misleading conclusions when studying the relationship between the independent and dependent variables. In essence, confounding variables create a potential 
+    source of bias in your analysis, as they can mimic or mask the true relationship between the variables of interest.
+
+
 6. What is A/B testing?
 
-
+    A/B testing, also known as split testing, is a method of experimentation used in marketing, product development, and web optimization to compare two or more versions of a webpage, email, or other content 
+    to determine which one performs better in terms of a specific outcome or key performance indicator (KPI). A/B testing is a valuable tool for making data-driven decisions and improving the effectiveness 
+    of digital assets.
 
 7. What are confidence intervals?
+
+    Confidence intervals are a statistical concept used to quantify the uncertainty or variability associated with a sample statistic, such as the sample mean or sample proportion, and provide a range within which 
+    a population parameter is likely to fall with a specified level of confidence. They are a valuable tool for making inferences about population parameters based on sample data.

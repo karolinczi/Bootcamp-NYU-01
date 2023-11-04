@@ -1,0 +1,37 @@
+## Practice Questions
+1. How do you assess the statistical significance of an insight?
+    Statisitical siginificance of an insight is crucila to figuring out if observed result has real effect orr is due to chance.
+    To do thhat you need to go through hypothesis tsesting and p-values (which is the probability of our observations occurring by chance, given the null hypothesis, is the pvalue ().
+    Below I will wrtite steps to be taken to validate your insights:
+    1) First you need to formulate the Hypothesis
+    2) Next you choose a Significance Level 
+    3) Then you collect and Analyze Data
+    4) Perform appropriate statistical analysis (e.g., t-tests, chi-square tests, ANOVA, regression analysis) depending on your data and research question.
+    5) Calculate the Test Statistic
+    6) Compute the P-Value - The p-value is a measure of how extreme your observed data is, assuming the null hypothesis is true. A smaller p-value suggests stronger evidence against the null hypothesis.
+    If your p-value is less than or equal to the chosen significance level (alpha), you reject the null hypothesis in favor of the alternative hypothesis.
+    7) Interpret the Results
+    8) Report Your Findings - In your report or research paper, describe the results, including the p-value and your conclusion about the statistical significance of the insight.
+
+2. What is the Central Limit Theorem? Explain it. Why is it important?
+    It is is a powerful statistical concept that underpins the use of parametric statistical methods in real-world applications. 
+    It simplifies the analysis of data by allowing us to rely on the properties of the normal distribution, even when dealing with populations that are not normally distributed, 
+    provided the sample size is sufficiently large.
+
+
+
+
+3. What is the statistical power?
+
+
+4. How do you control for biases?
+
+    Controlling for biases is one of the challenges of good 
+
+5. What are confounding variables?
+
+6. What is A/B testing?
+
+
+
+7. What are confidence intervals?

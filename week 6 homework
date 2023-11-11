@@ -1,0 +1,47 @@
+Linear Regression
+1. Preprocess Test data and get predictions
+
+
+2. Compute Mean Abolute Error, Mean Square error for test data
+
+import pandas as pd
+
+# Load your data (replace 'your_data.csv' with your actual file)
+data = pd.read_csv('your_data.csv')
+
+# Your preprocessing steps here (replace preprocess_function with your actual preprocessing function)
+def preprocess_data(data):
+    # ... your preprocessing steps ...
+    return preprocessed_data
+
+preprocessed_data = preprocess_data(data)
+
+import joblib
+
+# Load your trained model (replace 'your_model.pkl' with your actual model file)
+model = joblib.load('your_model.pkl')
+
+# Assuming your model.predict() takes the preprocessed_data as input
+predictions = model.predict(preprocessed_data)
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+
+# Assuming 'salary' is the true target variable in your data
+true_values = data['salary']
+
+# Compute MAE and MSE
+mae = mean_absolute_error(true_values, predictions)
+mse = mean_squared_error(true_values, predictions)
+
+print(f'Mean Absolute Error (MAE): {mae}')
+print(f'Mean Squared Error (MSE): {mse}')
+
+
+3. Implement Ridge and Lasso Regression and then compute the following metrics on test data
+
+
+
+Trees
+Compute errors on test sets
+Play with different parameter of decision trees and random forests and see the impact on train and test error
+[OPTIONAL] implement cross validation and get best hyperparameters

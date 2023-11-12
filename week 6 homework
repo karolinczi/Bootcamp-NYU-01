@@ -1,6 +1,37 @@
 Linear Regression
 1. Preprocess Test data and get predictions
 
+# Import necessary libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# Load the data
+data = pd.read_csv('train.csv')
+
+# Explore the data (optional)
+# print(data.head())
+# print(data.info())
+
+# Separate features and target variable
+X = data.drop('country', axis=1)  # replace 'target_column_name' with the actual target column name
+y = data['job_title']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Preprocess the data (you may need to customize this based on your data)
+# For example, handling missing values, encoding categorical variables, scaling, etc.
+# Below is a simple example:
+# X_train = X_train.fillna(X_train.mean())  # Replace missing values with the mean
+# X_test = X_test.fillna(X_train.mean())    # Use the mean from the training set for consistency
+
+# Standardize the features (mean=0 and variance=1)
+scaler = StandardScaler()
+X_train = scaler
+
 
 2. Compute Mean Abolute Error, Mean Square error for test data
 

@@ -1,6 +1,106 @@
 #####LOGISTIC REGRESSION#########
 
 1. Try different thresholds for computing predictions. By default it is 0.5. Use predict_proba function to compute probabilities and then try custom thresholds and see their impact on Accuracy, Precision and Recall
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+glass = pd.read_csv('glass.csv')
+glass.head()
+
+glass['household'] = glass.Type.map({1:0, 2:0, 3:0, 5:1, 6:1, 7:1})
+glass.household.value_counts()
+
+glass.sort_values( by = 'Al', inplace=True)
+X= np.array(glass.Al).reshape(-1,1)
+y = glass.household
+
+from sklearn.linear_model import LogisticRegression
+
+logreg = LogisticRegression()
+logreg.fit(X,y)
+pred = logreg.predict(X)
+logreg.coef_, logreg.intercept_
+
+glass.sort_values( by = 'Al', inplace=True)
+# Plot the class predictions.
+
+plt.scatter(glass.Al, glass.household)
+plt.plot(glass.Al, pred, color='red')
+plt.xlabel('al')
+plt.ylabel('household')
+
+logreg.predict_proba(X)[:15]
+
+# Store the predicted probabilities of class 1.
+glass['household_pred_prob'] = logreg.predict_proba(X)[:, 4]
+
+# Plot the predicted probabilities.
+plt.scatter(glass.Al, glass.household)
+plt.plot(glass.Al, glass.household_pred_prob, color='red')
+plt.xlabel('al')
+plt.ylabel('household')
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+glass = pd.read_csv('glass.csv')
+glass.head()
+
+glass['household'] = glass.Type.map({1:0, 2:0, 3:0, 5:1, 6:1, 7:1})
+glass.household.value_counts()
+
+glass.sort_values( by = 'Al', inplace=True)
+X= np.array(glass.Al).reshape(-1,1)
+y = glass.household
+
+from sklearn.linear_model import LogisticRegression
+
+logreg = LogisticRegression()
+logreg.fit(X,y)
+pred = logreg.predict(X)
+logreg.coef_, logreg.intercept_
+
+glass.sort_values( by = 'Al', inplace=True)
+# Plot the class predictions.
+
+plt.scatter(glass.Al, glass.household)
+plt.plot(glass.Al, pred, color='red')
+plt.xlabel('al')
+plt.ylabel('household')
+
+logreg.predict_proba(X)[:15]
+
+# Store the predicted probabilities of class 1.
+glass['household_pred_prob'] = logreg.predict_proba(X)[:, 1]
+
+# Plot the predicted probabilities.
+plt.scatter(glass.Al, glass.household)
+plt.plot(glass.Al, glass.household_pred_prob, color='red')
+plt.xlabel('al')
+plt.ylabel('household')
+
+from sklearn import metrics
+cm = metrics.confusion_matrix(y_true=y, y_pred=pred)
+cm
+
+Accuracy = (cm[0,0]+ cm[1,1])/ (np.sum(cm))
+Accuracy
+
+Precision = (cm[1,1])/ (np.sum(cm[: , 1]))
+Precision
+
+Recall = (cm[1,1])/ (np.sum(cm[1,:]))
+Recall
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+accuracy_score(y_true=y, y_pred=pred)
+
+precision_score(y_true=y, y_pred=pred)
+
+recall_score(y,pred)
+
 
 2. Do the same analysis for other columns
 
@@ -12,8 +112,105 @@
 ######CLUSTERING#########
 1. Repeat the above exercise for different values of k
  - How do the inertia and silhouette scores change?
+
+   Inertia:
+   Decreases as k increases.
+   Look for the point where the rate of decrease slows down (Elbow Method) to determine a reasonable value for k.
+   Silhouette Score:
+   Higher values indicate better-defined clusters.
+   Look for the value of k that maximizes the silhouette score.
+
+
  - What if you don't scale your features?
+
+   It is generally recommended to scale your features before applying clustering algorithms. 
+   Common scaling techniques include z-score normalization (subtracting the mean and dividing by the standard deviation) or 
+   Min-Max scaling (scaling values to a specific range, such as [0, 1]).
+   
+   Keep in mind that the specific impact of not scaling features can depend on the clustering algorithm used. 
+   Some algorithms, like k-means, are particularly sensitive to scale, while others, like hierarchical clustering, may be less affected. 
+   Regardless, scaling features is a good practice to ensure that the clustering process is more robust and less influenced by the inherent scales of the features.
+
  - Is there a 'right' k? Why or why not?
+   
+   there is no universally "right" value for k that applies to all datasets and situations. 
+   The choice of k depends on various factors, and different methods or heuristics may be used to make this determination. 
+
+--------------------------------------------------------------------
+
+%matplotlib inline 
+
+import pandas as pd
+import numpy as np
+from sklearn.metrics import pairwise_distances
+from sklearn import cluster, datasets, preprocessing, metrics
 
 
+# Check out the dataset and our target values
+df = pd.read_csv("iris.csv")
+print(df['Name'].value_counts())
+df.head(5)
+
+cols = df.columns[:-1]
+#sns.pairplot(df[cols])
+
+X_scaled = preprocessing.MinMaxScaler().fit_transform(df[cols])
+
+pd.DataFrame(X_scaled, columns=cols).describe()
+
+k = 6
+kmeans = cluster.KMeans(n_clusters=k)
+kmeans.fit(X_scaled)
+
+labels = kmeans.labels_
+centroids = kmeans.cluster_centers_
+inertia = kmeans.inertia_
+
+metrics.silhouette_score(X_scaled, labels, metric='euclidean')
+
+df['label'] = labels
+df.head()
+
+cols = df.columns[:-2]
+sns.pairplot(df, x_vars=cols, y_vars= cols, hue='label')
+---------------------------------------------------------------------------------------
 2. Repeat the following exercise for food nutrients dataset
+
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+# Load the dataset
+data = pd.read_csv("nutrients.txt")
+
+# Extract relevant columns for clustering
+columns_for_clustering = ["Energy", "Protein", "Fat", "Calcium", "Iron"]
+data_for_clustering = data[columns_for_clustering]
+
+# Standardize the data (scaling is important for k-means)
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(data_for_clustering)
+
+# Apply k-means clustering
+kmeans = KMeans(n_clusters=5, random_state=42)
+data['Cluster'] = kmeans.fit_predict(scaled_data)
+
+# Print the cluster assignments
+print("Cluster Assignments:")
+print(data[['name', 'Cluster']])
+
+# Visualize the clusters (using the first two features for simplicity)
+plt.scatter(scaled_data[:, 0], scaled_data[:, 1], c=data['Cluster'], cmap='viridis', edgecolors='k', s=50)
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], c='red', marker='X', s=200, label='Centroids')
+plt.title('Clustering of Nutrients Data')
+plt.xlabel('Scaled Feature 1')
+plt.ylabel('Scaled Feature 2')
+plt.legend()
+plt.show()
+
+
+
+
+
+
